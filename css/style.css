@@ -28,5 +28,87 @@ body {
 
   /* The clip-path property lets you clip an element to a basic shape or to an SVG source. */
   clip-path: polygon(0 0,100% 0,100% 75vh,0 100%);
+  position: relative;
 }
 
+
+.logo-box {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+
+.text-box {
+  
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  /* 在上面的基础之上 自身左移和上移50%以达到居中效果 */
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.logo {
+  height: 35px;
+}
+
+.heading-primary{
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.heading-primary-main{
+  display: block;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+
+  /* the animation */
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+
+.heading-primary-sub{
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 17.4px;
+
+  /* the animation */
+  animation: moveInRight 1s ease-out; 
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+
+
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  80% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
