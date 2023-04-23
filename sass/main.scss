@@ -1,10 +1,10 @@
-@charset "UTF-8";
 /*
 COLORS:
 Light green: #7ed56f
 Medium green: #55c57a
 Dark green: #28b485
 */
+
 /* 
 BEM（Block Element Modifier）是一种CSS命名约定，用于创建可重用、可维护和可扩展的Web组件。
 
@@ -14,116 +14,174 @@ BEM约定将页面中的每个组件（例如导航栏、按钮、表单等）�
 元素：menu-item、list-item、button-text等。
 修饰符：disabled、active、large等。
 */
+
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+$color-grey-dark:#777;
+$color-white: #fff;
+$color-black: #000;
+
 * {
   margin: 0;
   padding: 0;
   /* 标准盒模型的宽度和高度只包括元素的内容，而IE盒模型的宽度和高度包括元素的内容、内边距和边框。
   这两种盒模型的区别在于它们计算元素的宽度和高度的方式不同。 */
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.7;
-  color: #777;
-  padding: 30px; }
+  color: $color-grey-dark;
+  padding: 30px;
+}
 
 .header {
   height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-image: linear-gradient(to right bottom,rgba($color-primary-light,0.8),rgba($color-primary-dark,0.8)), url(../img/hero.jpg);
   background-size: cover;
   background-position: top;
+
   /* The clip-path property lets you clip an element to a basic shape or to an SVG source. */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  position: relative; }
-  .header___logo-box {
+  clip-path: polygon(0 0,100% 0,100% 75vh,0 100%);
+  position: relative;
+
+
+  &___logo-box {
     position: absolute;
     top: 40px;
-    left: 40px; }
-  .header__text-box {
+    left: 40px;
+  }
+
+  &__text-box {
+  
     position: absolute;
     top: 40%;
     left: 50%;
     /* 在上面的基础之上 自身左移和上移50%以达到居中效果 */
     transform: translate(-50%, -50%);
-    text-align: center; }
-  .header__logo {
-    height: 35px; }
+    text-align: center;
+  }
+  
+  &__logo {
+    height: 35px;
+  }
 
-.heading-primary {
-  color: #fff;
+}
+
+
+.heading-primary{
+  color: $color-white;
   text-transform: uppercase;
-  margin-bottom: 60px; }
-  .heading-primary--main {
+  margin-bottom: 60px;
+
+
+  &--main{
     display: block;
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
+  
     /* the animation */
     animation-name: moveInLeft;
     animation-duration: 1s;
-    animation-timing-function: ease-out; }
-  .heading-primary--sub {
+    animation-timing-function: ease-out;
+  }
+  
+  &--sub{
     display: block;
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 17.4px;
+  
     /* the animation */
-    animation: moveInRight 1s ease-out; }
+    animation: moveInRight 1s ease-out; 
+  }
+}
+
 
 @keyframes moveInLeft {
   0% {
     opacity: 0;
-    transform: translateX(-100px); }
+    transform: translateX(-100px);
+  }
+
   80% {
-    transform: translateX(10px); }
+    transform: translateX(10px);
+  }
+
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+
+
+}
 
 @keyframes moveInRight {
   0% {
     opacity: 0;
-    transform: translateX(100px); }
+    transform: translateX(100px);
+  }
+
   80% {
-    transform: translateX(-10px); }
+    transform: translateX(-10px);
+  }
+
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
 
 .btn {
+
   /* 
   :link和:visited是CSS中的伪类选择器，用于设置链接的样式。
   :link用于设置未访问过的链接的样式，即链接的默认状态。
   :visited用于设置已访问过的链接的样式，即链接的访问状态。 */
-  /* 
-  :active是CSS中的伪类选择器，用于设置元素在被激活（例如被点击）时的样式。
-  当用户点击一个元素时，该元素会进入:active状态，
-  此时可以通过:active选择器来设置该元素的样式。 */ }
-  .btn:link, .btn:visited {
+  &:link,
+  &:visited{
     text-transform: uppercase;
     text-decoration: none;
     padding: 15px 40px;
     border-radius: 100px;
     display: inline-block;
-    position: relative; }
-  .btn:hover {
+    position: relative;
+
+  }
+
+  &:hover{
     transform: translateY(-3px);
     /* 水平偏移量（必需）：阴影相对于元素的水平偏移量，可以是正数或负数。
   垂直偏移量（必需）：阴影相对于元素的垂直偏移量，可以是正数或负数。
   模糊半径（可选）：阴影的模糊程度，值越大阴影越模糊，可以是0。
   扩展半径（可选）：阴影的扩展程度，值越大阴影越大，可以是0。
   阴影颜色（可选）：阴影的颜色，可以是CSS颜色值或RGBA值。  */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); }
-    .btn:hover::after {
+    box-shadow: 0 10px 20px rgba($color-black,.2);
+
+    &::after{
       /* background-color: #fff; */
       transform: scaleX(1.4) scaleY(1.6);
-      opacity: 0; }
-  .btn:active {
+      opacity: 0;
+    }
+
+  }
+
+  /* 
+  :active是CSS中的伪类选择器，用于设置元素在被激活（例如被点击）时的样式。
+  当用户点击一个元素时，该元素会进入:active状态，
+  此时可以通过:active选择器来设置该元素的样式。 */
+  &:active{
     transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
-  .btn:after {
+    box-shadow: 0 5px 10px rgba($color-black,.2);
+  }
+
+  &:after{
     content: "";
     display: inline-block;
     width: 100%;
@@ -134,12 +192,18 @@ body {
     left: 0;
     z-index: -1;
     transition: all 0.4s;
-    background-color: #fff; }
-  .btn--white {
+    background-color: #fff;
+  }
+
+
+
+  &--white{
     background-color: #fff;
     color: #777;
-    transition: all 0.2s; }
-  .btn--animated {
+    transition: all 0.2s;
+  }
+
+  &--animated {
     /* 在CSS中，animation属性用于创建动画效果。它可以接受多个参数，包括：
   
   animation-name：必需，指定动画的名称，可以是@keyframes规则中定义的动画名称。
@@ -151,14 +215,22 @@ body {
   animation-fill-mode：可选，指定动画播放前和播放后元素的样式。
   animation-play-state：可选，指定动画的播放状态，可以是running（正在播放）或paused（暂停播放） */
     animation: moveInBottom 1s ease-out 0.75s;
+    
     /* 用于设置动画播放前和播放后元素的样式。
     */
-    animation-fill-mode: backwards; }
+    animation-fill-mode: backwards;
+  }
+  
+}
 
 @keyframes moveInBottom {
   0% {
     opacity: 0;
-    transform: translateY(30px); }
+    transform: translateY(30px);
+  }
+
   100% {
     opacity: 1;
-    transform: translate(0); } }
+    transform: translate(0);
+  }
+}
