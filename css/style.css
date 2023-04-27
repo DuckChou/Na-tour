@@ -21,6 +21,34 @@ BEM约定将页面中的每个组件（例如导航栏、按钮、表单等）�
   这两种盒模型的区别在于它们计算元素的宽度和高度的方式不同。 */
   box-sizing: border-box; }
 
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px); }
+  80% {
+    transform: translateX(10px); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px); }
+  80% {
+    transform: translateX(-10px); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
@@ -28,28 +56,6 @@ body {
   line-height: 1.7;
   color: #777;
   padding: 30px; }
-
-.header {
-  height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
-  background-size: cover;
-  background-position: top;
-  /* The clip-path property lets you clip an element to a basic shape or to an SVG source. */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  position: relative; }
-  .header___logo-box {
-    position: absolute;
-    top: 40px;
-    left: 40px; }
-  .header__text-box {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    /* 在上面的基础之上 自身左移和上移50%以达到居中效果 */
-    transform: translate(-50%, -50%);
-    text-align: center; }
-  .header__logo {
-    height: 35px; }
 
 .heading-primary {
   color: #fff;
@@ -71,26 +77,6 @@ body {
     letter-spacing: 17.4px;
     /* the animation */
     animation: moveInRight 1s ease-out; }
-
-@keyframes moveInLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-100px); }
-  80% {
-    transform: translateX(10px); }
-  100% {
-    opacity: 1;
-    transform: translate(0); } }
-
-@keyframes moveInRight {
-  0% {
-    opacity: 0;
-    transform: translateX(100px); }
-  80% {
-    transform: translateX(-10px); }
-  100% {
-    opacity: 1;
-    transform: translate(0); } }
 
 .btn {
   /* 
@@ -155,10 +141,24 @@ body {
     */
     animation-fill-mode: backwards; }
 
-@keyframes moveInBottom {
-  0% {
-    opacity: 0;
-    transform: translateY(30px); }
-  100% {
-    opacity: 1;
-    transform: translate(0); } }
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  /* The clip-path property lets you clip an element to a basic shape or to an SVG source. */
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative; }
+  .header__logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /* 在上面的基础之上 自身左移和上移50%以达到居中效果 */
+    transform: translate(-50%, -50%);
+    text-align: center; }
+  .header__logo {
+    height: 35px; }

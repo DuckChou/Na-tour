@@ -1,0 +1,84 @@
+.btn {
+
+  /* 
+  :link和:visited是CSS中的伪类选择器，用于设置链接的样式。
+  :link用于设置未访问过的链接的样式，即链接的默认状态。
+  :visited用于设置已访问过的链接的样式，即链接的访问状态。 */
+  &:link,
+  &:visited{
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    border-radius: 100px;
+    display: inline-block;
+    position: relative;
+
+  }
+
+  &:hover{
+    transform: translateY(-3px);
+    /* 水平偏移量（必需）：阴影相对于元素的水平偏移量，可以是正数或负数。
+  垂直偏移量（必需）：阴影相对于元素的垂直偏移量，可以是正数或负数。
+  模糊半径（可选）：阴影的模糊程度，值越大阴影越模糊，可以是0。
+  扩展半径（可选）：阴影的扩展程度，值越大阴影越大，可以是0。
+  阴影颜色（可选）：阴影的颜色，可以是CSS颜色值或RGBA值。  */
+    box-shadow: 0 10px 20px rgba($color-black,.2);
+
+    &::after{
+      /* background-color: #fff; */
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+
+  }
+
+  /* 
+  :active是CSS中的伪类选择器，用于设置元素在被激活（例如被点击）时的样式。
+  当用户点击一个元素时，该元素会进入:active状态，
+  此时可以通过:active选择器来设置该元素的样式。 */
+  &:active{
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba($color-black,.2);
+  }
+
+  &:after{
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+    background-color: #fff;
+  }
+
+
+
+  &--white{
+    background-color: #fff;
+    color: #777;
+    transition: all 0.2s;
+  }
+
+  &--animated {
+    /* 在CSS中，animation属性用于创建动画效果。它可以接受多个参数，包括：
+  
+  animation-name：必需，指定动画的名称，可以是@keyframes规则中定义的动画名称。
+  animation-duration：必需，指定动画的持续时间，可以是秒（s）或毫秒（ms）。
+  animation-timing-function：可选，指定动画的时间函数，用于控制动画的进度。
+  animation-delay：可选，指定动画的延迟时间，可以是秒（s）或毫秒（ms）。
+  animation-iteration-count：可选，指定动画的循环次数，可以是具体的次数或infinite（无限循环）。
+  animation-direction：可选，指定动画的播放方向，可以是normal（正常播放）、reverse（反向播放）或alternate（交替播放）。
+  animation-fill-mode：可选，指定动画播放前和播放后元素的样式。
+  animation-play-state：可选，指定动画的播放状态，可以是running（正在播放）或paused（暂停播放） */
+    animation: moveInBottom 1s ease-out 0.75s;
+    
+    /* 用于设置动画播放前和播放后元素的样式。
+    */
+    animation-fill-mode: backwards;
+  }
+  
+}
